@@ -1,0 +1,198 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.group.classhelper.AccountFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/my_green"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/header"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:text="@string/user_center"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:layout_above="@+id/header"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="15dp" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/my_gray">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:text="@string/new_password"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="start"
+                android:textAlignment="textStart"
+                android:layout_weight="2"
+                android:id="@+id/textView8"
+                android:textColor="@color/my_dark_blue" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/new_pwd"
+                android:layout_gravity="end"
+                android:src="@drawable/big_more"
+                android:background="@color/my_gray"
+                android:contentDescription="@string/more"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/my_gray">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:text="@string/my_file"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="start"
+                android:textAlignment="textStart"
+                android:layout_weight="2"
+                android:textColor="@color/my_dark_blue" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_file"
+                android:layout_gravity="end"
+                android:src="@drawable/big_more"
+                android:background="@color/my_gray"
+                android:contentDescription="@string/more"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"
+            android:id="@+id/line2" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/my_gray"
+            android:id="@+id/info_block">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:text="@string/my_info"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="start"
+                android:textAlignment="textStart"
+                android:layout_weight="2"
+                android:textColor="@color/my_dark_blue" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_info"
+                android:layout_gravity="end"
+                android:src="@drawable/big_more"
+                android:background="@color/my_gray"
+                android:contentDescription="@string/more"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"
+            android:id="@+id/line3" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/my_gray"
+            android:id="@+id/vote_block">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:text="@string/my_vote"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="start"
+                android:textAlignment="textStart"
+                android:layout_weight="2"
+                android:textColor="@color/my_dark_blue" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_vote"
+                android:layout_gravity="end"
+                android:src="@drawable/big_more"
+                android:background="@color/my_gray"
+                android:contentDescription="@string/more"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:text="@string/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:id="@+id/logout_button"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:background="@color/my_brown"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp" />
+</RelativeLayout>
