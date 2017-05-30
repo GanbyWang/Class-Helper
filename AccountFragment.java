@@ -6,17 +6,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AccountFragment extends Fragment {
     public View view;
     private Context myContext;
+    private TextView class_name;
 
     Handler handler = new Handler() {
         @Override
@@ -61,6 +64,10 @@ public class AccountFragment extends Fragment {
 
         myContext = getActivity();
 
+        // get the class name text view
+        class_name = (TextView) view.findViewById(R.id.class_name);
+
+        // set the listener on set the password
         ImageButton new_pwd = (ImageButton) view.findViewById(R.id.new_pwd);
         new_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +77,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        // set the listener on managing posting files
         ImageButton my_file = (ImageButton) view.findViewById(R.id.my_file);
         my_file.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,40 +87,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        ImageButton my_info = (ImageButton) view.findViewById(R.id.my_info);
-        if (LogInActivity.priority == 1) {
-            my_info.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), MyInfo.class);
-                    startActivity(intent);
-                }
-            });
-        } else {
-            LinearLayout info_block = (LinearLayout) view.findViewById(R.id.info_block);
-            info_block.setVisibility(View.INVISIBLE);
-
-            LinearLayout vote_block = (LinearLayout) view.findViewById(R.id.vote_block);
-            vote_block.setVisibility(View.INVISIBLE);
-
-            View line = (View) view.findViewById(R.id.line2);
-            line.setVisibility(View.INVISIBLE);
-
-            line = (View) view.findViewById(R.id.line3);
-            line.setVisibility(View.INVISIBLE);
-        }
-
-        ImageButton my_vote = (ImageButton) view.findViewById(R.id.my_vote);
-        if (LogInActivity.priority == 1) {
-            my_vote.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), MyVote.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
+        // set the listener on logout button
         Button logout = (Button) view.findViewById(R.id.logout_button);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,5 +97,101 @@ public class AccountFragment extends Fragment {
                         handler, HttpPost.TYPE_LOGOUT);
             }
         });
+
+        // if the user is a priority user
+        if (LogInActivity.priority == 1) {
+            // set the class name text view
+            class_name.setText("您是" + LogInActivity.className + "的管理员");
+
+            // hide the join class and create class to a priority user
+            LinearLayout joinClassBlock = (LinearLayout) view.findViewById(R.id.join_class_block);
+            joinClassBlock.setVisibility(View.GONE);
+            LinearLayout createClassBlock = (LinearLayout) view.findViewById(R.id.create_class_block);
+            createClassBlock.setVisibility(View.GONE);
+
+            // hide the lines
+            View line = (View) view.findViewById(R.id.line1);
+            line.setVisibility(View.GONE);
+            line = (View) view.findViewById(R.id.line2);
+            line.setVisibility(View.GONE);
+
+            // set listeners on managing info and file buttons
+            ImageButton my_info = (ImageButton) view.findViewById(R.id.my_info);
+            ImageButton my_vote = (ImageButton) view.findViewById(R.id.my_vote);
+
+            my_info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), MyInfo.class);
+                    startActivity(intent);
+                }
+            });
+
+            my_vote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), MyVote.class);
+                    startActivity(intent);
+                }
+            });
+
+        } else {
+            // hide the post block and info block to a normal user
+            LinearLayout info_block = (LinearLayout) view.findViewById(R.id.info_block);
+            info_block.setVisibility(View.GONE);
+            LinearLayout vote_block = (LinearLayout) view.findViewById(R.id.vote_block);
+            vote_block.setVisibility(View.GONE);
+
+            // hide the lines
+            View line = (View) view.findViewById(R.id.line4);
+            line.setVisibility(View.GONE);
+            line = (View) view.findViewById(R.id.line5);
+            line.setVisibility(View.GONE);
+
+            // if the user has joined some class
+            if(!LogInActivity.className.equals(null)) {
+                // set the class name text view
+                class_name.setText("您的班级是" + LogInActivity.className);
+
+                // hide the join and create block
+                LinearLayout joinClassBlock = (LinearLayout) view.findViewById(R.id.join_class_block);
+                joinClassBlock.setVisibility(View.GONE);
+                LinearLayout createClassBlock = (LinearLayout) view.findViewById(R.id.create_class_block);
+                createClassBlock.setVisibility(View.GONE);
+
+                // hide the lines
+                line = (View) view.findViewById(R.id.line1);
+                line.setVisibility(View.GONE);
+                line = (View) view.findViewById(R.id.line2);
+                line.setVisibility(View.GONE);
+
+            } else {
+                // set the class name text view
+                class_name.setText("您还未加入任何班级");
+
+                // set listener on join class button
+                ImageButton joinClassButton = (ImageButton) view.findViewById(R.id.join_class);
+                joinClassButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // TODO: show a list of current classes, user can choose one to join
+                        // using dialog window
+
+
+                    }
+                });
+
+                // set listener on create class button
+                ImageButton createClassButton = (ImageButton) view.findViewById(R.id.create_class);
+                createClassButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // jump to create class activity
+                        Intent intent = new Intent(getActivity(), CreateClassActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+        }
     }
 }
