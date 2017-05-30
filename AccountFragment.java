@@ -2,11 +2,11 @@ package com.example.group.classhelper;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,9 +115,10 @@ public class AccountFragment extends Fragment {
             line = (View) view.findViewById(R.id.line2);
             line.setVisibility(View.GONE);
 
-            // set listeners on managing info and file buttons
+            // set listeners on managing info, file and request buttons
             ImageButton my_info = (ImageButton) view.findViewById(R.id.my_info);
             ImageButton my_vote = (ImageButton) view.findViewById(R.id.my_vote);
+            ImageButton my_request = (ImageButton) view.findViewById(R.id.my_request);
 
             my_info.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -135,17 +136,29 @@ public class AccountFragment extends Fragment {
                 }
             });
 
+            my_request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), MyRequestActivity.class);
+                    startActivity(intent);
+                }
+            });
+
         } else {
-            // hide the post block and info block to a normal user
+            // hide the post, info and request block to a normal user
             LinearLayout info_block = (LinearLayout) view.findViewById(R.id.info_block);
             info_block.setVisibility(View.GONE);
             LinearLayout vote_block = (LinearLayout) view.findViewById(R.id.vote_block);
             vote_block.setVisibility(View.GONE);
+            LinearLayout request_block = (LinearLayout) view.findViewById(R.id.request_block);
+            request_block.setVisibility(View.GONE);
 
             // hide the lines
             View line = (View) view.findViewById(R.id.line4);
             line.setVisibility(View.GONE);
             line = (View) view.findViewById(R.id.line5);
+            line.setVisibility(View.GONE);
+            line = (View) view.findViewById(R.id.line6);
             line.setVisibility(View.GONE);
 
             // if the user has joined some class
