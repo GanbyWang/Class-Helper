@@ -24,7 +24,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class LogInActivity extends AppCompatActivity {
-    private Button login_button;
+    private Button login_button, registerButton;
     private EditText user_name;
     private EditText password;
     private AlertDialog alert = null;
@@ -35,6 +35,7 @@ public class LogInActivity extends AppCompatActivity {
     public static String access_token = null;
     public static String usernameString = null;
     public static String passwordString = null;
+    public static String className = null;
 
     Intent intent = new Intent();
 
@@ -116,6 +117,20 @@ public class LogInActivity extends AppCompatActivity {
 
         user_name.setText("");
         password.setText("");
+
+        // get the register button
+        registerButton = (Button) findViewById(R.id.register_button);
+        // set listener on register button
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // jump to register page
+                intent.setClass(LogInActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                // as the user may come back to this page
+                // we don't finish the activity
+            }
+        });
 
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
