@@ -44,6 +44,15 @@
     <string name="post_file_title">请输入文件的标题</string>
     <string name="file_type">请选择文件的类型</string>
     <string name="logout">退出登录</string>
+    <string name="register">注册</string>
+    <string name="repeat_pwd">重复密码：</string>
+    <string name="create_class">创建班级</string>
+    <string name="join_class">加入班级</string>
+    <string name="college">学院：</string>
+    <string name="major">专业：</string>
+    <string name="year">入学年份：</string>
+    <string name="class_number">班号：</string>
+    <string name="sure_create">确认创建</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -48,7 +48,9 @@
         <activity android:name=".RealMainActivity" />
         <activity android:name=".MyFile" />
         <activity android:name=".MyInfo" />
-        <activity android:name=".MyVote"></activity>
+        <activity android:name=".MyVote" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".CreateClassActivity"></activity>
     </application>
 
 </manifest>
